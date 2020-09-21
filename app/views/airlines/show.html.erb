@@ -1,0 +1,8 @@
+<h1>Information for<%= @airline.name %></h1>
+
+<h3>Passengers for <%= @airline.name %>:</h3>
+<% @airline.flights.each do |flight| %>
+  <% flight.passengers.each do |passenger| %>
+    <p><%= passenger.name %></p>
+  <%end %>
+<% end %>
