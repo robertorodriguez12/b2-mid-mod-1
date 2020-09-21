@@ -1,8 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "Flights", type: :TYPE do
-  describe "As a visitor" do
-    before(:each) do
+RSpec.describe "Flights", type: :feature do
+    before :each do
       @airline = Airline.create(name: "United")
       @airline2 = Airline.create(name: "Frontier")
       @flight = @airline.flights.create(flight_number: "UA123")
@@ -12,18 +11,20 @@ RSpec.describe "Flights", type: :TYPE do
       @flight2.passengers << Passenger.create(name: "Mark", age: 21)
       @flight2.passengers << Passenger.create(name: "Felicia", age: 23)
     end
+
+    describe "When I visit a flight index page" do
+
     it "can see a list of all flights and it's passengers" do
       visit '/flights'
 
       expect(page).to have_content(@flight.flight_number)
       expect(page).to have_content(@flight2.flight_number)
 
+      within"#flight-#{@flight.id}"
+        expect(page).to have_content("John")
+        expect(page).to have_content("Jane")
+        save_and_open_page
+      end
     end
 
   end
-#   User Story 1, Flights Index Page
-# As a visitor
-# When I visit the flights index page ('/flights')
-# I see a list of all flight numbers
-# And under each flight number I see the names of all that flights passengers
-end
