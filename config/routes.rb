@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :flights
   resources :airlines
-  patch '/flights/less/:id', to: 'flights#remove_passenger'
   resources :passengers, only: [:index]
+  scope :flights do
+    delete '/passengers/:id', to: 'passenger_flights#destroy', as: 'remove_passenger'
+  end 
 end

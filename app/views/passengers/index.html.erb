@@ -1,7 +1,7 @@
 <h1>Passenger Information</h1>
 
 <% @passengers.each do |passenger| %>
-  <section id='passenger-<% passenger.id %>'>
+  <section id='passenger-<%= passenger.id %>'>
     <p>Passenger Name: <%= passenger.name %></p>
     <p>Number of Flights: <%= passenger.flights.count %></p>
   </section>

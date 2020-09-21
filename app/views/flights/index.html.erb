@@ -4,9 +4,9 @@
   <section id='flight<%= flight.id %>'>
     <%= flight.flight_number %>
     <% flight.passengers.each do |passenger| %>
-    <section id='passenger-<% passenger.id %>'>
+    <section id='passenger-<%= passenger.id %>'>
       <%= passenger.name %>
-      <%= link_to 'Remove', "/flights/less/#{passenger.id}", method: :patch%>
+      <%= link_to 'Remove', remove_passenger_path(id: passenger.id, flight_id: flight.id), method: :delete%>
     </section>
     <% end %>
   </section>
