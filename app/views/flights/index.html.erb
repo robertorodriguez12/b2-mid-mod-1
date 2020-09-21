@@ -6,7 +6,7 @@
     <% flight.passengers.each do |passenger| %>
     <section id='passenger-<% passenger.id %>'>
       <%= passenger.name %>
-      <%= link_to 'Remove', "/flights/#{passenger.id}", method: :delete%>
+      <%= link_to 'Remove', "/flights/less/#{passenger.id}", method: :patch%>
     </section>
     <% end %>
   </section>

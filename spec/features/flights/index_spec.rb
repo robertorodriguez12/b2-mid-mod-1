@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Flights", type: :feature do
+  describe "When I visit a flight index page" do
     before :each do
       @airline = Airline.create(name: "United")
       @airline2 = Airline.create(name: "Frontier")
@@ -12,8 +13,6 @@ RSpec.describe "Flights", type: :feature do
       @flight2.passengers << Passenger.create(name: "Felicia", age: 23)
     end
 
-    describe "When I visit a flight index page" do
-
     it "can see a list of all flights and it's passengers" do
       visit '/flights'
 
@@ -23,8 +22,6 @@ RSpec.describe "Flights", type: :feature do
       within"#flight-#{@flight.id}"
         expect(page).to have_content("John")
         expect(page).to have_content("Jane")
-        save_and_open_page
       end
     end
-
   end
